@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/adventurer-run-05.png-43e07f3ebef4a10a53e85a68b0cf6f94.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://art/player/Individual Sprites/adventurer-run-05.png"
+dest_files=[ "res://.import/adventurer-run-05.png-43e07f3ebef4a10a53e85a68b0cf6f94.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0
