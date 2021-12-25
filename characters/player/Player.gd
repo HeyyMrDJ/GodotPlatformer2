@@ -51,21 +51,22 @@ func get_input():
 	if Input.is_action_pressed("attack"):
 			#attacking = true
 			
-		if $raycast_slash.is_colliding():
-			print("Attack")
-			var collider = $raycast_slash.get_collider().get_name()
-			#print(collider)	
-			Events.emit_signal("player_attacked", collider)
+		check_slash()
 		state = state_machine.get_current_node()
 		print(state)
 		if state == "Idle":
+			check_slash()
 			state_machine.travel("Attack1")
 		if state == "Attack1":
+			check_slash()
 			state_machine.travel("Attack2")
 			attacking = false
+			$Music/Swing.play()
 		if state == "Attack2":
+			check_slash()
 			state_machine.travel("Attack3")
 			attacking = false
+			$Music/Swing.play()
 	if !Input.is_action_pressed("move_left") or !Input.is_action_pressed("move_right"):
 		velocity.x = 0
 		attacking = false
@@ -114,11 +115,7 @@ func get_input():
 		
 	if Input.is_action_pressed("test"):
 		#player_jump()
-		if $raycast_cast.is_colliding():
-			print("Attack")
-			var collider = $raycast_cast.get_collider().get_name()
-			#print(collider)
-			Events.emit_signal("player_attacked", collider)
+		check_slash()
 		
 			
 		
@@ -158,13 +155,24 @@ func check_cast():
 		print(collider)
 		yield(get_tree().create_timer(0.5), "timeout")
 		Events.emit_signal("player_attacked", collider)
+		
+func check_slash():
+	if $raycast_slash.is_colliding():
+		print("Attack")
+		var collider = $raycast_cast.get_collider().get_name()
+		#print(collider)
+		Events.emit_signal("player_attacked", collider)
+	
 
 func stop_music():
-	queue_free()
+	#queue_free()
+	pass
 
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Enemy"):
-		Events.emit_signal("player_died")
-		queue_free()
+		player_died()
 
+func player_died():
+	Events.emit_signal("player_died")
+	queue_free()

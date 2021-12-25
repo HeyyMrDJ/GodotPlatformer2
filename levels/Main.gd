@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 
 # Declare member variables here. Examples:
@@ -8,18 +8,12 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Events.connect("end_game", self, "end_game")
+	Events.connect("player_died", self, "player_died")
+	
+func player_died():
+	$you_died_music.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-func _on_Area2D_body_entered(body):
-	if body.is_in_group("Player"):
-		$endlevel_music.play()
-		Events.end_level()
-
-func end_game():
-	$endlevel_music.stop()

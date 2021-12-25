@@ -16,6 +16,7 @@ resource_name = "Chorus"
 resource_name = "Amplify"
 
 [resource]
+bus/0/volume_db = -33.989
 bus/1/name = "Cast"
 bus/1/solo = false
 bus/1/mute = false
