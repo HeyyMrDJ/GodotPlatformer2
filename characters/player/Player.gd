@@ -155,7 +155,7 @@ func check_cast():
 	if $raycast_cast.is_colliding():
 		print("Attack")
 		var collider = $raycast_cast.get_collider().get_name()
-		#print(collider)
+		print(collider)
 		yield(get_tree().create_timer(0.5), "timeout")
 		Events.emit_signal("player_attacked", collider)
 
@@ -165,6 +165,6 @@ func stop_music():
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Enemy"):
-		#Events.emit_signal("player_attacked")
+		Events.emit_signal("player_died")
 		queue_free()
 

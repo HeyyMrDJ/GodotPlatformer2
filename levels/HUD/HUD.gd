@@ -8,8 +8,9 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Events.connect("stop_music", self, "stop_music")
+	Events.connect("stop_music", self, "end_level")
 	Events.connect("open_menu", self, "open_menu")
+	Events.connect("player_died", self, "player_died")
 	$Button.hide()
 	$text_window.hide()
 	$current_level_name.hide()
@@ -20,7 +21,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func stop_music():
+func end_level():
 	$text_window.text = "LEVEL COMPLETED!!!"
 	$text_window.show()
 
@@ -33,3 +34,9 @@ func open_menu():
 		$Button.hide()
 	else:
 		$Button.show()
+
+func player_died():
+	$text_window.text = "YOU DIED"
+	$text_window.show()
+	$Button.text = "RETRY"
+	$Button.show()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=2]
+[gd_scene load_steps=100 format=2]
 
 [ext_resource path="res://art/player/Individual Sprites/adventurer-idle-02.png" type="Texture" id=1]
 [ext_resource path="res://art/player/Individual Sprites/adventurer-idle-03.png" type="Texture" id=2]
@@ -26,7 +26,6 @@
 [ext_resource path="res://art/player/Individual Sprites/adventurer-run-04.png" type="Texture" id=24]
 [ext_resource path="res://art/player/Individual Sprites/adventurer-run-03.png" type="Texture" id=25]
 [ext_resource path="res://art/player/Individual Sprites/adventurer-run-05.png" type="Texture" id=26]
-[ext_resource path="res://art/light.png" type="Texture" id=27]
 [ext_resource path="res://characters/player/Player.gd" type="Script" id=33]
 [ext_resource path="res://art/player/Individual Sprites/adventurer-fall-00.png" type="Texture" id=34]
 [ext_resource path="res://art/player/Individual Sprites/adventurer-fall-01.png" type="Texture" id=35]
@@ -527,6 +526,23 @@ parameters/playback = SubResource( 50 )
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="raycast_slash" type="RayCast2D" parent="."]
+position = Vector2( 4.76837e-07, 0 )
+rotation = -1.5708
+scale = Vector2( 1, 1 )
+enabled = true
+collision_mask = 2
+collide_with_areas = true
+
+[node name="raycast_cast" type="RayCast2D" parent="."]
+position = Vector2( 6.5, 1 )
+rotation = -1.5708
+scale = Vector2( 1, 1 )
+enabled = true
+cast_to = Vector2( 0, 100 )
+collision_mask = 2
+collide_with_areas = true
+
 [node name="Music" type="Node" parent="."]
 
 [node name="Jump" type="AudioStreamPlayer" parent="Music"]
@@ -543,27 +559,6 @@ bus = "Cast"
 
 [node name="Fire" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 20 )
-
-[node name="Light2D" type="Light2D" parent="."]
-texture = ExtResource( 27 )
-texture_scale = 0.2
-energy = 0.5
-
-[node name="raycast_cast" type="RayCast2D" parent="."]
-position = Vector2( 6.5, 1 )
-rotation = -1.5708
-scale = Vector2( 1, 1 )
-enabled = true
-cast_to = Vector2( 0, 100 )
-collide_with_areas = true
-
-[node name="raycast_slash" type="RayCast2D" parent="."]
-position = Vector2( 4.76837e-07, 0 )
-rotation = -1.5708
-scale = Vector2( 1, 1 )
-enabled = true
-cast_to = Vector2( 0, 25 )
-collide_with_areas = true
 
 [node name="Area2D" type="Area2D" parent="."]
 
